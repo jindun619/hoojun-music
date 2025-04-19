@@ -1,7 +1,6 @@
 import RankingList from "@/components/RankingList";
 import { createSpotifySdk } from "@/utils/spotify";
 import { useEffect } from "react";
-import axios from "axios";
 
 const Home = () => {
   const songList = [
