@@ -1,6 +1,7 @@
 import RankingList from "@/components/RankingList";
 import { createSpotifySdk } from "@/utils/spotify";
 import { useEffect } from "react";
+import axios from "axios";
 
 const Home = () => {
   const songList = [
@@ -81,7 +82,6 @@ const Home = () => {
     console.log(sdk);
     (async () => {
       const items = await sdk.search("The Beatles", ["artist"]);
-
       console.table(
         items.artists.items.map((item) => ({
           name: item.name,
@@ -90,8 +90,7 @@ const Home = () => {
         }))
       );
     })();
-  }, []);
-
+  });
   return <RankingList songs={songList} />;
 };
 
