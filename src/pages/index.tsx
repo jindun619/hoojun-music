@@ -1,4 +1,6 @@
 import RankingList from "@/components/RankingList";
+import { createSpotifySdk } from "@/utils/spotify";
+import { useEffect } from "react";
 
 const Home = () => {
   const songList = [
@@ -73,6 +75,22 @@ const Home = () => {
       overallScore: 8.5,
     },
   ];
+
+  useEffect(() => {
+    const sdk = createSpotifySdk();
+    console.log(sdk);
+    (async () => {
+      const items = await sdk.search("The Beatles", ["artist"]);
+
+      console.table(
+        items.artists.items.map((item) => ({
+          name: item.name,
+          followers: item.followers.total,
+          popularity: item.popularity,
+        }))
+      );
+    })();
+  }, []);
 
   return <RankingList songs={songList} />;
 };
