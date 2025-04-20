@@ -1,6 +1,7 @@
 import { Track } from "@/types/track";
 import { RawTrack } from "@/types/rawTrack";
 import { getTrackInfo } from "@/lib/spotify/track";
+import { SimplifiedArtist } from "@spotify/web-api-ts-sdk";
 
 export const convertRawTrackToTrack = async (
   rawTrack: RawTrack
@@ -8,10 +9,11 @@ export const convertRawTrackToTrack = async (
   console.log("trackId:", rawTrack.trackId);
 
   const trackData = await getTrackInfo(rawTrack.trackId);
+  console.log(trackData);
 
   const trackName = trackData.name;
   const artistName = trackData.artists
-    .map((artist: any) => artist.name)
+    .map((artist: SimplifiedArtist) => artist.name)
     .join(", ");
   const albumImgUrl = trackData.album.images?.[0]?.url ?? "";
 
