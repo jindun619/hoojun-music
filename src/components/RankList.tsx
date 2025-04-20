@@ -21,6 +21,7 @@ const RankList = ({ data }: RankListProps) => {
             trackName={track.trackName}
             artistName={track.artistName}
             overallScore={track.overallScore}
+            scores={track.scores}
           />
         ))}
       </div>
