@@ -20,12 +20,23 @@ export const convertRawTrackToTrack = async (
   const total = scoreValues.reduce((sum, val) => sum + val, 0);
   const overallScore = parseFloat((total / scoreValues.length).toFixed(2));
 
+  const convertedScores = {
+    structure: rawTrack.scores.structure,
+    lyrics: rawTrack.scores.lyrics,
+    production: rawTrack.scores.production,
+    performance: rawTrack.scores.performance,
+    originality: rawTrack.scores.originality,
+    melody_rhythm: rawTrack.scores.melody_rhythm,
+    emotion: rawTrack.scores.emotion,
+  };
+
   const converted: Track = {
     trackId: rawTrack.trackId,
     trackName,
     artistName,
     albumImgUrl,
     overallScore,
+    scores: convertedScores,
   };
 
   return converted;
