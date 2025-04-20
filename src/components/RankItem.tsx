@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import { RankedTrack } from "@/types/rankedTrack";
 
 const RankItem = ({
@@ -8,9 +9,17 @@ const RankItem = ({
   albumImgUrl,
   overallScore,
 }: RankedTrack) => {
-  console.log(trackId);
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push(`/track/${trackId}`);
+  };
+
   return (
-    <div className="card bg-base-100 shadow-md my-2">
+    <div
+      className="card bg-base-100 shadow-md my-2 hover:shadow-xl hover:bg-gray-50 transition-all duration-300 ease-in-out cursor-pointer"
+      onClick={handleClick}
+    >
       <div className="card-body p-4 flex flex-row items-center space-x-4">
         <div className="text-2xl font-bold text-primary w-8 text-center">
           {rank}

@@ -1,5 +1,13 @@
 export interface RawTrack {
   id: string;
   trackId: string;
-  scores: string; //JSON
+  scores: {
+    structure: number;
+    lyrics: number;
+    production: number;
+    performance: number;
+    originality: number;
+    melody_rhythm: number;
+    emotion: number;
+  };
 }
