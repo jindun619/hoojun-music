@@ -8,6 +8,7 @@ const RankItem = ({
   albumImgUrl,
   overallScore,
 }: RankedTrack) => {
+  console.log(trackId);
   return (
     <div className="card bg-base-100 shadow-md my-2">
       <div className="card-body p-4 flex flex-row items-center space-x-4">
