@@ -23,7 +23,7 @@ export default async function handler(
     const tracks = Object.values(result[0]);
 
     return res.status(200).json({ success: true, data: tracks });
-  } catch (error: any) {
+  } catch (error) {
     console.error("Redis Error:", error);
     return res
       .status(500)

@@ -5,7 +5,7 @@ const redis = Redis.fromEnv();
 
 export const getTracks = async (): Promise<RawTrack[]> => {
   try {
-    const result = (await redis.json.get("tracks", "$")) as any[];
+    const result = (await redis.json.get("tracks", "$")) as RawTrack[];
 
     if (!result || !Array.isArray(result) || result.length === 0) {
       return [];
