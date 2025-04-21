@@ -1,6 +1,6 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { Redis } from "@upstash/redis";
-import { TrackDTO } from "@/types/dto/trackDTO";
+import { TrackDTO } from "@/types/dto/TrackDTO";
 
 const TRACKS_KEY = "tracks";
 const redis = Redis.fromEnv();
