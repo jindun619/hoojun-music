@@ -1,4 +1,4 @@
-import { RankedTrack } from "@/types/rankedTrack";
+import { RankedTrack } from "@/types/RankedTrack";
 import RankItem from "./RankItem";
 
 interface RankListProps {
