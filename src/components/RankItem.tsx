@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-import { RankedTrack } from "@/types/rankedTrack";
+import { RankedTrack } from "@/types/RankedTrack";
 
 const RankItem = ({
   rank,
