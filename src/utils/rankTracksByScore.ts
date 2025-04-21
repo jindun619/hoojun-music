@@ -1,5 +1,5 @@
-import { Track } from "@/types/track";
-import { RankedTrack } from "@/types/rankedTrack";
+import { Track } from "@/types/Track";
+import { RankedTrack } from "@/types/RankedTrack";
 
 export function rankTracksByScore(tracks: Track[]): RankedTrack[] {
   const sorted = [...tracks].sort((a, b) => b.overallScore - a.overallScore);

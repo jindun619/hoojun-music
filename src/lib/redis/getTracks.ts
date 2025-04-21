@@ -1,5 +1,5 @@
 import { Redis } from "@upstash/redis";
-import { RawTrack } from "@/types/rawTrack";
+import { RawTrack } from "@/types/RawTrack";
 
 const redis = Redis.fromEnv();
 

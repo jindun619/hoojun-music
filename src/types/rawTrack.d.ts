@@ -1,4 +1,4 @@
-import { Scores } from "./scores";
+import { Scores } from "./Scores";
 
 export interface RawTrack {
   id: string;

@@ -1,9 +1,10 @@
 import { GetStaticProps } from "next";
 import RankingList from "@/components/RankList";
-import { RankedTrack } from "@/types/rankedTrack";
+import { RankedTrack } from "@/types/RankedTrack";
 import { convertRawTrackToTrack } from "@/utils/convert";
 import { rankTracksByScore } from "@/utils/rankTracksByScore";
 import { getTracks } from "@/lib/redis/getTracks";
+import axios from "axios";
 
 interface Props {
   rankedTracks: RankedTrack[];
