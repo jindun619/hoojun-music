@@ -15,6 +15,7 @@ export default function AdminLogin() {
         window.location.href = "/admin"; // 예: 관리 페이지로 이동
       }
     } catch (err) {
+      console.log(err);
       setError("Invalid password");
     }
   };

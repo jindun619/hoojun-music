@@ -22,7 +22,7 @@ export default async function handler(
     const spotify = createSpotifySdk();
     const track = await spotify.tracks.get(id);
     return res.status(200).json(track);
-  } catch (err: any) {
+  } catch (err) {
     console.error(err);
     return res.status(500).json({ error: "Failed to fetch track" });
   }

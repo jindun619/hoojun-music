@@ -13,6 +13,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
     jwt.verify(token, process.env.JWT_SECRET as string);
     return res.status(200).json({ message: "Protected content" });
   } catch (err) {
+    console.log(err);
     return res.status(401).json({ message: "Invalid or expired token" });
   }
 }

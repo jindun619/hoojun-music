@@ -4,13 +4,15 @@ import { RankedTrack } from "@/types/RankedTrack";
 const RankItem = ({
   id,
   rank,
-  trackId = "i won't be used",
+  trackId,
   trackName,
   artistName,
   albumImgUrl,
   overallScore,
 }: RankedTrack) => {
   const router = useRouter();
+
+  console.log(trackId);
 
   const handleClick = () => {
     router.push(`/track/${id}`);

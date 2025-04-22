@@ -17,6 +17,7 @@ const TrackForm: React.FC<TrackFormProps> = ({
   handleAddTrack,
   handleScoreChange,
 }) => {
+  console.log(setScores);
   return (
     <div className="card bg-base-100 shadow-md">
       <div className="card-body space-y-4">

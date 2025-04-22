@@ -49,7 +49,7 @@ export default async function handler(
           },
         };
 
-        // @ts-ignore
+        // @ts-expect-error
         await redis.json.set(`${TRACKS_KEY}`, `$.${key}`, mergedTrack); //이 그지같은 ts 오류는 무시하자구
         return res
           .status(200)
