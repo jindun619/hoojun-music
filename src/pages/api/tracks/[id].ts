@@ -49,8 +49,8 @@ export default async function handler(
           },
         };
 
-        // @ts-expect-error
-        await redis.json.set(`${TRACKS_KEY}`, `$.${key}`, mergedTrack); //이 그지같은 ts 오류는 무시하자구
+        // @ts-expect-error 이 그지같은 ts 오류는 무시하자구
+        await redis.json.set(`${TRACKS_KEY}`, `$.${key}`, mergedTrack);
         return res
           .status(200)
           .json({ message: "Track updated", track: mergedTrack });
