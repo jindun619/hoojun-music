@@ -5,10 +5,7 @@ import { getTrackInfo } from "@/lib/spotify/track";
 export const convertRawTrackToTrack = async (
   rawTrack: RawTrack
 ): Promise<Track> => {
-  console.log("trackId:", rawTrack.trackId);
-
   const trackData = await getTrackInfo(rawTrack.trackId);
-  console.log(trackData);
 
   const trackName = trackData.name;
   const artistName = trackData.artists
@@ -31,6 +28,7 @@ export const convertRawTrackToTrack = async (
   };
 
   const converted: Track = {
+    id: rawTrack.id,
     trackId: rawTrack.trackId,
     trackName,
     artistName,

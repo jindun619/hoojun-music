@@ -1,6 +1,7 @@
 import { Scores } from "./Scores";
 
 export interface Track {
+  id: string;
   trackId: string;
   trackName: string;
   artistName: string;

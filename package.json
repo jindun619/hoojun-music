@@ -13,6 +13,7 @@
     "@upstash/redis": "^1.34.8",
     "axios": "^1.8.4",
     "daisyui": "^5.0.27",
+    "jsonwebtoken": "^9.0.2",
     "lucide-react": "^0.501.0",
     "next": "15.3.1",
     "react": "^19.0.0",
@@ -21,6 +22,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@types/jsonwebtoken": "^9.0.9",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

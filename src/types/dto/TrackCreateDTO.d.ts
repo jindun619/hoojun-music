@@ -1,6 +1,6 @@
 import { Scores } from "../Scores";
 
-export interface TrackDTO {
+export interface TrackCreateDTO {
   scores: Scores;
   trackId: string;
 }

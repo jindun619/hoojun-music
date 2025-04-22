@@ -14,7 +14,8 @@ const RankList = ({ data }: RankListProps) => {
       <div className="space-y-2">
         {data.map((track) => (
           <RankItem
-            key={track.trackId}
+            key={track.id}
+            id={track.id}
             trackId={track.trackId}
             rank={track.rank}
             albumImgUrl={track.albumImgUrl}

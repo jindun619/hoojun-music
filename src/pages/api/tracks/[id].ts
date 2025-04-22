@@ -19,14 +19,7 @@ export default async function handler(
     }
 
     // 데이터 가져오기
-    const data = (await redis.json.get(TRACKS_KEY)) as Record<
-      string,
-      RawTrack
-    > | null;
-
-    if (!data) {
-      return res.status(404).json({ error: "Track data not found" });
-    }
+    const data = (await redis.json.get(TRACKS_KEY)) as Record<string, RawTrack>;
 
     const key = Object.keys(data).find((k) => data[k].id === id);
 
@@ -40,20 +33,27 @@ export default async function handler(
       }
 
       case "PATCH": {
-        // if (!req.body || typeof req.body !== "object") {
-        //   return res
-        //     .status(400)
-        //     .json({ error: "Invalid or missing request body" });
-        // }
+        if (!req.body || typeof req.body !== "object") {
+          return res
+            .status(400)
+            .json({ error: "Invalid or missing request body" });
+        }
 
-        // const updatedTrack: Partial<RawTrack> = req.body;
-        // const mergedTrack: RawTrack = { ...data[key], ...updatedTrack };
+        const updatedTrack: Partial<RawTrack> = req.body;
+        const mergedTrack: RawTrack = {
+          ...data[key],
+          ...updatedTrack,
+          scores: {
+            ...data[key].scores,
+            ...(updatedTrack.scores ?? {}),
+          },
+        };
 
-        // await redis.json.set(`${TRACKS_KEY}.${key}`, "$", mergedTrack);
-        // return res
-        //   .status(200)
-        //   .json({ message: "Track updated", track: mergedTrack });
-        return res.status(500).json({ message: "come back later" });
+        // @ts-ignore
+        await redis.json.set(`${TRACKS_KEY}`, `$.${key}`, mergedTrack); //이 그지같은 ts 오류는 무시하자구
+        return res
+          .status(200)
+          .json({ message: "Track updated", track: mergedTrack });
       }
 
       case "DELETE": {

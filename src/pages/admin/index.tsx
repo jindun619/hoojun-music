@@ -1,112 +1,158 @@
 import { useEffect, useState } from "react";
-
-import { Track } from "@/types/Track";
-import { RawTrack } from "@/types/RawTrack";
+import axios from "axios";
 import { convertRawTrackToTrack } from "@/utils/convert";
+import { RawTrack } from "@/types/RawTrack";
+import { Track } from "@/types/Track";
+import TrackForm from "@/components/TrackForm";
+import SearchFilter from "@/components/SearchFilter";
+import SortFilter from "@/components/SortFilter";
+import TrackList from "@/components/TrackList";
+import { Scores } from "@/types/Scores";
 
-export default function AdminTracks() {
-  const [rawTracks, setRawTracks] = useState<RawTrack[]>([]);
+const emptyScores: Scores = {
+  structure: 0,
+  lyrics: 0,
+  production: 0,
+  performance: 0,
+  originality: 0,
+  melody_rhythm: 0,
+  emotion: 0,
+};
+
+export default function AdminPage() {
   const [tracks, setTracks] = useState<Track[]>([]);
-  const [title, setTitle] = useState("");
-  const [artist, setArtist] = useState("");
-
-  const fetchTracks = async () => {
-    const res = await fetch("/api/tracks");
-    const data = await res.json();
-    setRawTracks(Object.values(data[0]) as RawTrack[]);
-  };
-
-  const addTrack = async () => {
-    await fetch("/api/tracks", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ title, artist }),
-    });
-    setTitle("");
-    setArtist("");
-    fetchTracks();
-  };
-
-  const deleteTrack = async (id: string) => {
-    await fetch(`/api/tracks/${id}`, {
-      method: "DELETE",
-    });
-    fetchTracks();
-  };
-
-  //   useEffect(() => {
-  //     fetchTracks();
-  //   }, []);
+  const [filteredTracks, setFilteredTracks] = useState<Track[]>([]);
+  const [trackId, setTrackId] = useState("");
+  const [scores, setScores] = useState<Scores>(emptyScores);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [sortOption, setSortOption] = useState<
+    "trackName" | "artistName" | "overallScore"
+  >("trackName");
+  const [sortOrder, setSortOrder] = useState<"asc" | "desc">("asc");
 
   useEffect(() => {
-    (async () => {
-      const convertedTracks = await Promise.all(
-        rawTracks.map((raw) => convertRawTrackToTrack(raw))
+    const token = localStorage.getItem("token");
+    if (!token) {
+      window.location.href = "/login"; // 로그인 페이지로 리디렉트
+    }
+
+    axios
+      .get("/api/protected", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(() => {
+        fetchTracks(); // 인증 성공 후 트랙을 가져옴
+      })
+      .catch(() => {
+        localStorage.removeItem("token"); // 토큰이 유효하지 않으면 로그아웃 처리
+        window.location.href = "/login"; // 로그인 페이지로 리디렉트
+      });
+  }, []);
+
+  // Spotify track URL에서 trackId만 추출하는 함수
+  function extractTrackId(url: string) {
+    const regex = /track\/([a-zA-Z0-9]+)/;
+    const match = url.match(regex);
+    return match ? match[1] : "";
+  }
+
+  async function fetchTracks() {
+    const res = await fetch("/api/tracks");
+    const rawData: RawTrack[] = await res.json();
+    const converted = await Promise.all(rawData.map(convertRawTrackToTrack));
+    setTracks(converted);
+    setFilteredTracks(converted);
+  }
+
+  function handleSearchChange(e: React.ChangeEvent<HTMLInputElement>) {
+    const query = e.target.value;
+    setSearchQuery(query);
+
+    if (query) {
+      const lowerCaseQuery = query.toLowerCase();
+      const filtered = tracks.filter(
+        (track) =>
+          track.trackName.toLowerCase().includes(lowerCaseQuery) ||
+          track.artistName.toLowerCase().includes(lowerCaseQuery)
       );
-      setTracks(convertedTracks);
-    })();
-  }, [rawTracks]);
+      setFilteredTracks(filtered);
+    } else {
+      setFilteredTracks(tracks);
+    }
+  }
+
+  function sortTracks(tracks: Track[]): Track[] {
+    return [...tracks].sort((a, b) => {
+      if (sortOption === "overallScore") {
+        return sortOrder === "asc"
+          ? a.overallScore - b.overallScore
+          : b.overallScore - a.overallScore;
+      }
+      if (sortOption === "trackName") {
+        return sortOrder === "asc"
+          ? a.trackName.localeCompare(b.trackName)
+          : b.trackName.localeCompare(a.trackName);
+      }
+      if (sortOption === "artistName") {
+        return sortOrder === "asc"
+          ? a.artistName.localeCompare(b.artistName)
+          : b.artistName.localeCompare(a.artistName);
+      }
+      return 0;
+    });
+  }
+
+  async function handleAddTrack() {
+    const id = extractTrackId(trackId);
+    if (id) {
+      await axios.post("/api/tracks", { trackId: id, scores });
+      await fetchTracks();
+      setTrackId("");
+      setScores(emptyScores);
+    } else {
+      console.error("Invalid track ID or URL");
+    }
+  }
+
+  function handleDelete(id: string) {
+    axios.delete(`/api/tracks/${id}`);
+    fetchTracks();
+  }
 
   return (
-    <div className="p-8">
-      <h1 className="text-2xl font-bold mb-4">🎵 Track Admin</h1>
+    <div className="p-6 max-w-4xl mx-auto space-y-8">
+      <h1 className="text-3xl font-bold text-center">
+        🎧 Admin - Track Manager
+      </h1>
 
-      <div className="flex flex-col gap-2 mb-6">
-        <input
-          type="text"
-          placeholder="Title"
-          className="input input-bordered w-full"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <input
-          type="text"
-          placeholder="Artist"
-          className="input input-bordered w-full"
-          value={artist}
-          onChange={(e) => setArtist(e.target.value)}
-        />
-        <button className="btn btn-primary" onClick={addTrack}>
-          Add Track
-        </button>
-      </div>
+      <TrackForm
+        trackId={trackId}
+        scores={scores}
+        setTrackId={setTrackId}
+        setScores={setScores}
+        handleAddTrack={handleAddTrack}
+        handleScoreChange={(key, value) =>
+          setScores({ ...scores, [key]: value })
+        }
+      />
 
-      <div className="overflow-x-auto">
-        <table className="table table-zebra w-full">
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Artist</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tracks
-              ? tracks.map((track) => (
-                  <tr key={track.trackId}>
-                    <td>{track.trackName}</td>
-                    <td>{track.artistName}</td>
-                    <td>
-                      <button
-                        className="btn btn-sm btn-error"
-                        onClick={() => deleteTrack(track.trackId)}
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))
-              : ""}
-            {tracks.length === 0 && (
-              <tr>
-                <td colSpan={3} className="text-center text-gray-400">
-                  No tracks found.
-                </td>
-              </tr>
-            )}
-          </tbody>
-        </table>
-      </div>
+      <SearchFilter
+        searchQuery={searchQuery}
+        handleSearchChange={handleSearchChange}
+      />
+      <SortFilter
+        sortOption={sortOption}
+        sortOrder={sortOrder}
+        setSortOption={setSortOption}
+        setSortOrder={setSortOrder}
+      />
+
+      <TrackList
+        tracks={sortTracks(filteredTracks)}
+        handleDelete={handleDelete}
+      />
     </div>
   );
 }

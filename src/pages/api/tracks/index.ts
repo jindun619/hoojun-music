@@ -1,6 +1,7 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { Redis } from "@upstash/redis";
-import { TrackDTO } from "@/types/dto/TrackDTO";
+import { TrackCreateDTO } from "@/types/dto/TrackCreateDTO";
+import { RawTrack } from "@/types/RawTrack";
 
 const TRACKS_KEY = "tracks";
 const redis = Redis.fromEnv();
@@ -10,27 +11,41 @@ export default async function handler(
   res: NextApiResponse
 ) {
   if (req.method === "GET") {
-    const data = await redis.json.get(TRACKS_KEY);
-    return res.status(200).json(data);
+    const data = (await redis.json.get(TRACKS_KEY)) as Record<string, RawTrack>;
+    const trackArray = Object.values(data);
+    return res.status(200).json(trackArray);
   }
 
   if (req.method === "POST") {
-    const newTrack: TrackDTO = req.body;
-    const currentData = (await redis.json.get(TRACKS_KEY)) ?? {};
+    try {
+      const newTrack: TrackCreateDTO = req.body;
+      const data = (await redis.json.get(TRACKS_KEY)) as Record<
+        string,
+        RawTrack
+      >;
+      const trackArray = Object.values(data);
 
-    const newId = (Object.keys(currentData).length + 1).toString();
+      // 새로운 ID는 기존 마지막 ID + 1
+      const lastId = trackArray.at(-1)?.id ?? "-1";
+      const newId = (parseInt(lastId) + 1).toString();
 
-    const updatedData = {
-      ...currentData,
-      [newId]: {
-        id: newId,
-        ...newTrack,
-      },
-    };
+      const updatedData = {
+        ...data,
+        [newId]: {
+          id: newId,
+          ...newTrack,
+        },
+      };
 
-    await redis.json.set(TRACKS_KEY, "$", updatedData);
+      await redis.json.set(TRACKS_KEY, "$", updatedData);
 
-    return res.status(201).json({ message: "Track added", id: newId });
+      return res
+        .status(201)
+        .json({ message: "Track added", track: { id: newId, ...newTrack } });
+    } catch (error) {
+      console.error("Error adding track:", error);
+      return res.status(500).json({ message: "Failed to add track" });
+    }
   }
 
   return res.status(405).json({ error: "Method Not Allowed" });

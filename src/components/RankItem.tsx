@@ -2,8 +2,9 @@ import { useRouter } from "next/router";
 import { RankedTrack } from "@/types/RankedTrack";
 
 const RankItem = ({
+  id,
   rank,
-  trackId,
+  trackId = "i won't be used",
   trackName,
   artistName,
   albumImgUrl,
@@ -12,7 +13,7 @@ const RankItem = ({
   const router = useRouter();
 
   const handleClick = () => {
-    router.push(`/track/${trackId}`);
+    router.push(`/track/${id}`);
   };
 
   return (
