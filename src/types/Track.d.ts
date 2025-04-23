@@ -7,5 +7,6 @@ export interface Track {
   artistName: string;
   albumImgUrl: string;
   overallScore: number;
+  description: string;
   scores: Scores;
 }

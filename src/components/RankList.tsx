@@ -21,6 +21,7 @@ const RankList = ({ data }: RankListProps) => {
             albumImgUrl={track.albumImgUrl}
             trackName={track.trackName}
             artistName={track.artistName}
+            description={track.description}
             overallScore={track.overallScore}
             scores={track.scores}
           />

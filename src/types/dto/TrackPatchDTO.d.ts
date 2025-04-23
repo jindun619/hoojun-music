@@ -1,6 +1,7 @@
 import { Scores } from "../Scores";
 
 export interface TrackPatchDTO {
-  scores?: Scores;
   trackId?: string;
+  description?: string;
+  scores?: Scores;
 }

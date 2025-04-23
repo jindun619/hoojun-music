@@ -8,11 +8,12 @@ const RankItem = ({
   trackName,
   artistName,
   albumImgUrl,
+  description,
   overallScore,
 }: RankedTrack) => {
   const router = useRouter();
 
-  console.log(trackId);
+  console.log(trackId, description);
 
   const handleClick = () => {
     router.push(`/track/${id}`);

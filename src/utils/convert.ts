@@ -30,6 +30,7 @@ export const convertRawTrackToTrack = async (
   const converted: Track = {
     id: rawTrack.id,
     trackId: rawTrack.trackId,
+    description: rawTrack.description,
     trackName,
     artistName,
     albumImgUrl,
