@@ -1,4 +1,5 @@
 import { useRouter } from "next/router";
+import Image from "next/image";
 import { Scores } from "@/types/Scores";
 
 interface RankItemProps {
@@ -34,11 +35,13 @@ const RankItem = ({
         {rank}
       </div>
 
-      <div className="w-16 h-16 rounded-lg overflow-hidden">
-        <img
+      <div className="w-16 h-16 relative rounded-lg overflow-hidden">
+        <Image
           src={albumImgUrl}
           alt={trackName}
-          className="object-cover w-full h-full"
+          fill
+          sizes="64px"
+          className="object-cover rounded-lg"
         />
       </div>
 
