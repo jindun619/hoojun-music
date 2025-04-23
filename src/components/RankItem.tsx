@@ -1,50 +1,56 @@
 import { useRouter } from "next/router";
-import { RankedTrack } from "@/types/RankedTrack";
+import { Scores } from "@/types/Scores";
+
+interface RankItemProps {
+  id: string;
+  rank: number;
+  trackName: string;
+  artistName: string;
+  albumImgUrl: string;
+  overallScore: number;
+  scores: Scores;
+}
 
 const RankItem = ({
   id,
   rank,
-  trackId,
   trackName,
   artistName,
   albumImgUrl,
-  description,
   overallScore,
-}: RankedTrack) => {
+}: RankItemProps) => {
   const router = useRouter();
 
-  console.log(trackId, description);
-
   const handleClick = () => {
-    router.push(`/track/${id}`);
+    router.push(`/tracks/${id}`);
   };
 
   return (
     <div
-      className="card bg-base-100 shadow-md my-2 hover:shadow-xl hover:bg-gray-50 transition-all duration-300 ease-in-out cursor-pointer"
+      className="flex items-center gap-4 p-4 rounded-lg shadow-md bg-base-100 cursor-pointer hover:shadow-lg transition-all duration-200"
       onClick={handleClick}
     >
-      <div className="card-body p-4 flex flex-row items-center space-x-4">
-        <div className="text-2xl font-bold text-primary w-8 text-center">
-          {rank}
-        </div>
+      <div className="text-lg font-extrabold text-green-600 w-8 text-center">
+        {rank}
+      </div>
 
-        <div className="w-14 h-14 rounded overflow-hidden">
-          <img
-            src={albumImgUrl}
-            alt={trackName}
-            className="object-cover w-full h-full"
-          />
-        </div>
+      <div className="w-16 h-16 rounded-lg overflow-hidden">
+        <img
+          src={albumImgUrl}
+          alt={trackName}
+          className="object-cover w-full h-full"
+        />
+      </div>
 
-        <div className="flex-1">
-          <div className="text-lg font-medium truncate">{trackName}</div>
-          <div className="text-sm text-gray-500 truncate">{artistName}</div>
+      <div className="flex-1 min-w-0">
+        <div className="text-base font-semibold truncate text-neutral-900">
+          {trackName}
         </div>
+        <div className="text-sm text-neutral-500 truncate">{artistName}</div>
+      </div>
 
-        <div className="badge badge-secondary text-base py-3 px-4 font-semibold">
-          {overallScore.toFixed(1)}
-        </div>
+      <div className="text-sm font-bold bg-neutral-100 text-neutral-700 px-3 py-1 rounded-md">
+        {overallScore.toFixed(1)}
       </div>
     </div>
   );

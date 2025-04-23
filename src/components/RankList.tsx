@@ -16,12 +16,10 @@ const RankList = ({ data }: RankListProps) => {
           <RankItem
             key={track.id}
             id={track.id}
-            trackId={track.trackId}
             rank={track.rank}
             albumImgUrl={track.albumImgUrl}
             trackName={track.trackName}
             artistName={track.artistName}
-            description={track.description}
             overallScore={track.overallScore}
             scores={track.scores}
           />

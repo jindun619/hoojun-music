@@ -1,6 +1,6 @@
 import { Track } from "@/types/Track";
 import { RawTrack } from "@/types/RawTrack";
-import { getTrackInfo } from "@/lib/spotify/track";
+import { getTrackInfo } from "@/lib/spotify/getTrackInfo";
 
 export const convertRawTrackToTrack = async (
   rawTrack: RawTrack
