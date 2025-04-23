@@ -9,7 +9,7 @@ const RankList = ({ data }: RankListProps) => {
   return (
     <div className="w-full max-w-2xl mx-auto mt-6">
       <h2 className="text-2xl font-bold mb-4 text-center text-primary">
-        Top Ranked tracks
+        HOOJUN CHART
       </h2>
       <div className="space-y-2">
         {data.map((track) => (
