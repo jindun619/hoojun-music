@@ -111,34 +111,27 @@ const AdminPage = () => {
   };
 
   const handleAddTrack = async () => {
-    const id = extractTrackId(trackId);
-    if (!id) {
+    const extractedTrackId = extractTrackId(trackId);
+    if (!extractedTrackId) {
       console.error("Invalid track ID or URL");
       return;
     }
 
-    const isDuplicate = tracks.some((track) => track.trackId === id);
+    const isDuplicate = tracks.some(
+      (track) => track.trackId === extractedTrackId
+    );
     if (isDuplicate) {
       alert("이미 존재하는 트랙입니다.");
       return;
     }
 
     const dto: TrackCreateDTO = {
-      trackId: id,
+      trackId: extractedTrackId,
       scores,
       description: description || "", // 빈 값 처리
     };
 
     try {
-      await axios.post("/api/tracks", dto);
-
-      await axios.get("/api/revalidate", {
-        params: {
-          id,
-          secret: process.env.NEXT_PUBLIC_REVALIDATE_SECRET,
-        },
-      });
-
       await fetchTracks();
 
       setTrackId("");
