@@ -24,7 +24,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const paths = rankedTracks.map((track) => ({
     params: { id: track.id },
   }));
-  return { paths, fallback: false };
+  return { paths, fallback: "blocking" };
 };
 
 export const getStaticProps: GetStaticProps<TrackDetailPageProps> = async (
