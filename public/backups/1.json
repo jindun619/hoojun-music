@@ -1,0 +1,114 @@
+{
+  "0": {
+    "description": "",
+    "id": "0",
+    "scores": {
+      "emotion": 3,
+      "lyrics": 3,
+      "melody_rhythm": 3,
+      "originality": 5,
+      "performance": 4,
+      "production": 4,
+      "structure": 4
+    },
+    "trackId": "3z8h0TU7ReDPLIbEnYhWZb"
+  },
+  "1": {
+    "description": "",
+    "id": "1",
+    "scores": {
+      "emotion": 3,
+      "lyrics": 3,
+      "melody_rhythm": 4,
+      "originality": 3,
+      "performance": 4,
+      "production": 3,
+      "structure": 2
+    },
+    "trackId": "2kkvB3RNRzwjFdGhaUA0tz"
+  },
+  "2": {
+    "description": "",
+    "id": "2",
+    "scores": {
+      "emotion": 3,
+      "lyrics": 3,
+      "melody_rhythm": 4,
+      "originality": 2,
+      "performance": 3,
+      "production": 3,
+      "structure": 4
+    },
+    "trackId": "4NrGMEm5SvvpJ9Tk1Rq3cP"
+  },
+  "3": {
+    "description": "",
+    "id": "3",
+    "scores": {
+      "emotion": 4,
+      "lyrics": 5,
+      "melody_rhythm": 3,
+      "originality": 3,
+      "performance": 3,
+      "production": 4,
+      "structure": 4
+    },
+    "trackId": "2RChe0r2cMoyOvuKobZy44"
+  },
+  "4": {
+    "description": "",
+    "id": "4",
+    "scores": {
+      "emotion": 4,
+      "lyrics": 4,
+      "melody_rhythm": 4,
+      "originality": 3,
+      "performance": 3,
+      "production": 3,
+      "structure": 4
+    },
+    "trackId": "7iN1s7xHE4ifF5povM6A48"
+  },
+  "5": {
+    "description": "",
+    "id": "5",
+    "scores": {
+      "emotion": 4,
+      "lyrics": 3,
+      "melody_rhythm": 3,
+      "originality": 3,
+      "performance": 3,
+      "production": 3,
+      "structure": 4
+    },
+    "trackId": "0ETFjACtuP2ADo6LFhL6HN"
+  },
+  "6": {
+    "description": "",
+    "id": "6",
+    "scores": {
+      "emotion": 3,
+      "lyrics": 3,
+      "melody_rhythm": 3,
+      "originality": 3,
+      "performance": 4,
+      "production": 4,
+      "structure": 5
+    },
+    "trackId": "69kZsoRrSf7GBTSdJ4BjqA"
+  },
+  "7": {
+    "description": "",
+    "id": "7",
+    "scores": {
+      "emotion": 3,
+      "lyrics": 4,
+      "melody_rhythm": 2,
+      "originality": 4,
+      "performance": 5,
+      "production": 3,
+      "structure": 2
+    },
+    "trackId": "40riOy7x9W7GXjyGp4pjAv"
+  }
+}
