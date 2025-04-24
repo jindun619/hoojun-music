@@ -8,6 +8,7 @@ import SearchFilter from "@/components/SearchFilter";
 import SortFilter from "@/components/SortFilter";
 import TrackList from "@/components/TrackList";
 import { Scores } from "@/types/Scores";
+import { TrackCreateDTO } from "@/types/dto/TrackCreateDTO";
 
 const emptyScores: Scores = {
   structure: 0,
@@ -23,6 +24,7 @@ const AdminPage = () => {
   const [tracks, setTracks] = useState<Track[]>([]);
   const [filteredTracks, setFilteredTracks] = useState<Track[]>([]);
   const [trackId, setTrackId] = useState("");
+  const [description, setDescription] = useState("");
   const [scores, setScores] = useState<Scores>(emptyScores);
   const [searchQuery, setSearchQuery] = useState("");
   const [sortOption, setSortOption] = useState<
@@ -121,8 +123,14 @@ const AdminPage = () => {
       return;
     }
 
+    const dto: TrackCreateDTO = {
+      trackId: id,
+      scores,
+      description: description || "", // 빈 값 처리
+    };
+
     try {
-      await axios.post("/api/tracks", { trackId: id, scores });
+      await axios.post("/api/tracks", dto);
 
       await axios.get("/api/revalidate", {
         params: {
@@ -135,6 +143,7 @@ const AdminPage = () => {
 
       setTrackId("");
       setScores(emptyScores);
+      setDescription(""); // 초기화
     } catch (error) {
       console.error("트랙 추가 중 오류 발생:", error);
     }
@@ -153,8 +162,10 @@ const AdminPage = () => {
 
       <TrackForm
         trackId={trackId}
+        description={description}
         scores={scores}
         setTrackId={setTrackId}
+        setDescription={setDescription}
         handleAddTrack={handleAddTrack}
         handleScoreChange={(key, value) =>
           setScores({ ...scores, [key]: value })
