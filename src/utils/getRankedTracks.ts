@@ -1,4 +1,3 @@
-// lib/cache/tracks.ts
 import { Track } from "@/types/Track";
 import { convertRawTrackToTrack } from "@/utils/convert";
 import { getTracks } from "@/lib/redis/getTracks";
@@ -6,7 +5,7 @@ import { rankTracksByScore } from "@/utils/rankTracksByScore";
 
 let cachedTracks: Track[] | null = null;
 
-export const getRankedTracks = async (): Promise<Track[]> => {
+export const getRankedTracks = async () => {
   if (cachedTracks) return cachedTracks;
 
   const rawTracks = await getTracks();
@@ -22,6 +21,6 @@ export const getRankedTracks = async (): Promise<Track[]> => {
   return ranked;
 };
 
-export function clearTrackCache() {
+export const clearTrackCache = () => {
   cachedTracks = null;
-}
+};
