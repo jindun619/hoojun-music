@@ -61,9 +61,14 @@ export default function AdminPage() {
   async function fetchTracks() {
     const res = await fetch("/api/tracks");
     const rawData: RawTrack[] = await res.json();
-    const converted = await Promise.all(rawData.map(convertRawTrackToTrack));
-    setTracks(converted);
-    setFilteredTracks(converted);
+    const convertedTracks = await Promise.all(
+      rawData.map(convertRawTrackToTrack)
+    );
+    const validTracks = convertedTracks.filter(
+      (track): track is Track => track !== null
+    );
+    setTracks(validTracks);
+    setFilteredTracks(validTracks);
   }
 
   function handleSearchChange(e: React.ChangeEvent<HTMLInputElement>) {

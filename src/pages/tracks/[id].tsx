@@ -35,6 +35,10 @@ export const getStaticProps: GetStaticProps<TrackDetailPageProps> = async (
   const track = rankedTracks.find((t) => t.id === id)!;
 
   const trackInfo = await getTrackInfo(track.trackId);
+  if (!trackInfo) {
+    return { notFound: true };
+  }
+
   const artistId = trackInfo.artists[0].id;
   const artistInfo = await getArtistInfo(artistId);
 

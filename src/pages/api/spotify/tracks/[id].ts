@@ -1,5 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { createSpotifySdk } from "@/lib/spotify";
+import { getTrackInfo } from "@/lib/spotify/getTrackInfo";
 
 export default async function handler(
   req: NextApiRequest,
@@ -19,8 +20,7 @@ export default async function handler(
   }
 
   try {
-    const spotify = createSpotifySdk();
-    const track = await spotify.tracks.get(id);
+    const track = await getTrackInfo(id);
     return res.status(200).json(track);
   } catch (err) {
     console.error(err);

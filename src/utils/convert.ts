@@ -4,8 +4,9 @@ import { getTrackInfo } from "@/lib/spotify/getTrackInfo";
 
 export const convertRawTrackToTrack = async (
   rawTrack: RawTrack
-): Promise<Track> => {
+): Promise<Track | null> => {
   const trackData = await getTrackInfo(rawTrack.trackId);
+  if (!trackData) return null; // 여기서 필터링
 
   const trackName = trackData.name;
   const artistName = trackData.artists
