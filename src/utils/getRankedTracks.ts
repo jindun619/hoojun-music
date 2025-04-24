@@ -3,10 +3,10 @@ import { convertRawTrackToTrack } from "./convert";
 import { getTracks } from "@/lib/redis/getTracks";
 import { rankTracksByScore } from "./rankTracksByScore";
 
-// let cachedTracks: Track[] | null = null;
+let cachedTracks: Track[] | null = null;
 
 export const getRankedTracks = async () => {
-  // if (cachedTracks) return cachedTracks;
+  if (cachedTracks) return cachedTracks;
 
   const rawTracks = await getTracks();
   const convertedTracks = await Promise.all(
@@ -17,10 +17,10 @@ export const getRankedTracks = async () => {
   );
   const ranked = rankTracksByScore(validTracks);
 
-  // cachedTracks = ranked;
+  cachedTracks = ranked;
   return ranked;
 };
 
-// export const clearTrackCache = () => {
-//   cachedTracks = null;
-// };
+export const clearTrackCache = () => {
+  cachedTracks = null;
+};
