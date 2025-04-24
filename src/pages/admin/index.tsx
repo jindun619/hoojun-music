@@ -51,13 +51,13 @@ const AdminPage = () => {
       });
   }, []);
 
-  function extractTrackId(url: string) {
+  const extractTrackId = (url: string) => {
     const regex = /track\/([a-zA-Z0-9]+)/;
     const match = url.match(regex);
     return match ? match[1] : "";
-  }
+  };
 
-  async function fetchTracks() {
+  const fetchTracks = async () => {
     const res = await fetch("/api/tracks");
     const rawData: RawTrack[] = await res.json();
     const convertedTracks = await Promise.all(
@@ -68,9 +68,9 @@ const AdminPage = () => {
     );
     setTracks(validTracks);
     setFilteredTracks(validTracks);
-  }
+  };
 
-  function handleSearchChange(e: React.ChangeEvent<HTMLInputElement>) {
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value;
     setSearchQuery(query);
 
@@ -85,9 +85,9 @@ const AdminPage = () => {
     } else {
       setFilteredTracks(tracks);
     }
-  }
+  };
 
-  function sortTracks(tracks: Track[]): Track[] {
+  const sortTracks = (tracks: Track[]): Track[] => {
     return [...tracks].sort((a, b) => {
       if (sortOption === "overallScore") {
         return sortOrder === "asc"
@@ -106,24 +106,35 @@ const AdminPage = () => {
       }
       return 0;
     });
-  }
+  };
 
-  async function handleAddTrack() {
+  const handleAddTrack = async () => {
     const id = extractTrackId(trackId);
-    if (id) {
+    if (!id) {
+      console.error("Invalid track ID or URL");
+      return;
+    }
+
+    const isDuplicate = tracks.some((track) => track.trackId === id);
+    if (isDuplicate) {
+      alert("이미 존재하는 트랙입니다.");
+      return;
+    }
+
+    try {
       await axios.post("/api/tracks", { trackId: id, scores });
       await fetchTracks();
       setTrackId("");
       setScores(emptyScores);
-    } else {
-      console.error("Invalid track ID or URL");
+    } catch (error) {
+      console.error("트랙 추가 중 오류 발생:", error);
     }
-  }
+  };
 
-  function handleDelete(id: string) {
+  const handleDelete = (id: string) => {
     axios.delete(`/api/tracks/${id}`);
     fetchTracks();
-  }
+  };
 
   return (
     <div className="p-6 max-w-4xl mx-auto space-y-8">
