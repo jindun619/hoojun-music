@@ -9,7 +9,6 @@ import SortFilter from "@/components/SortFilter";
 import TrackList from "@/components/TrackList";
 import { Scores } from "@/types/Scores";
 import { TrackCreateDTO } from "@/types/dto/TrackCreateDTO";
-import { clearTrackCache } from "@/utils/getRankedTracks";
 
 const emptyScores: Scores = {
   structure: 0,
