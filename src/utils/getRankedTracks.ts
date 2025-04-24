@@ -1,11 +1,12 @@
+// lib/cache/tracks.ts
 import { Track } from "@/types/Track";
-import { convertRawTrackToTrack } from "./convert";
+import { convertRawTrackToTrack } from "@/utils/convert";
 import { getTracks } from "@/lib/redis/getTracks";
-import { rankTracksByScore } from "./rankTracksByScore";
+import { rankTracksByScore } from "@/utils/rankTracksByScore";
 
 let cachedTracks: Track[] | null = null;
 
-export async function getRankedTracks() {
+export const getRankedTracks = async (): Promise<Track[]> => {
   if (cachedTracks) return cachedTracks;
 
   const rawTracks = await getTracks();
@@ -17,6 +18,10 @@ export async function getRankedTracks() {
   );
   const ranked = rankTracksByScore(validTracks);
 
-  cachedTracks = ranked; // 메모리에 저장
+  cachedTracks = ranked;
   return ranked;
+};
+
+export function clearTrackCache() {
+  cachedTracks = null;
 }

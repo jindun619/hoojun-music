@@ -123,7 +123,16 @@ const AdminPage = () => {
 
     try {
       await axios.post("/api/tracks", { trackId: id, scores });
+
+      await axios.get("/api/revalidate", {
+        params: {
+          id,
+          secret: process.env.NEXT_PUBLIC_REVALIDATE_SECRET,
+        },
+      });
+
       await fetchTracks();
+
       setTrackId("");
       setScores(emptyScores);
     } catch (error) {
