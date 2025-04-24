@@ -38,6 +38,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       await redis.json.set(TRACKS_KEY, "$", updatedData);
 
       clearTrackCache();
+      await fetch(
+        `${process.env.NEXT_PUBLIC_SITE_URL}/api/revalidate?secret=${process.env.REVALIDATE_SECRET}&path=/`
+      );
+      await fetch(
+        `${process.env.NEXT_PUBLIC_SITE_URL}/api/revalidate?secret=${process.env.REVALIDATE_SECRET}&path=/tracks/${newId}`
+      );
 
       return res
         .status(201)
