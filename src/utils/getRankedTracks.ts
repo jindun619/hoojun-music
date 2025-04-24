@@ -5,7 +5,7 @@ import { rankTracksByScore } from "@/utils/rankTracksByScore";
 
 let cachedTracks: Track[] | null = null;
 
-export const getRankedTracks = async () => {
+export async function getRankedTracks() {
   if (cachedTracks) return cachedTracks;
 
   const rawTracks = await getTracks();
@@ -19,7 +19,7 @@ export const getRankedTracks = async () => {
 
   cachedTracks = ranked;
   return ranked;
-};
+}
 
 export const clearTrackCache = () => {
   cachedTracks = null;
