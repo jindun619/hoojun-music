@@ -1,7 +1,7 @@
 import { Track } from "@/types/Track";
-import { convertRawTrackToTrack } from "@/utils/convert";
+import { convertRawTrackToTrack } from "./convert";
 import { getTracks } from "@/lib/redis/getTracks";
-import { rankTracksByScore } from "@/utils/rankTracksByScore";
+import { rankTracksByScore } from "./rankTracksByScore";
 
 let cachedTracks: Track[] | null = null;
 
