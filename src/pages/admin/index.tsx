@@ -19,7 +19,7 @@ const emptyScores: Scores = {
   emotion: 0,
 };
 
-export default function AdminPage() {
+const AdminPage = () => {
   const [tracks, setTracks] = useState<Track[]>([]);
   const [filteredTracks, setFilteredTracks] = useState<Track[]>([]);
   const [trackId, setTrackId] = useState("");
@@ -33,7 +33,7 @@ export default function AdminPage() {
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (!token) {
-      window.location.href = "/login"; // 로그인 페이지로 리디렉트
+      window.location.href = "/login";
     }
 
     axios
@@ -43,15 +43,14 @@ export default function AdminPage() {
         },
       })
       .then(() => {
-        fetchTracks(); // 인증 성공 후 트랙을 가져옴
+        fetchTracks();
       })
       .catch(() => {
         localStorage.removeItem("token"); // 토큰이 유효하지 않으면 로그아웃 처리
-        window.location.href = "/login"; // 로그인 페이지로 리디렉트
+        window.location.href = "/login";
       });
   }, []);
 
-  // Spotify track URL에서 trackId만 추출하는 함수
   function extractTrackId(url: string) {
     const regex = /track\/([a-zA-Z0-9]+)/;
     const match = url.match(regex);
@@ -136,7 +135,6 @@ export default function AdminPage() {
         trackId={trackId}
         scores={scores}
         setTrackId={setTrackId}
-        setScores={setScores}
         handleAddTrack={handleAddTrack}
         handleScoreChange={(key, value) =>
           setScores({ ...scores, [key]: value })
@@ -160,4 +158,6 @@ export default function AdminPage() {
       />
     </div>
   );
-}
+};
+
+export default AdminPage;

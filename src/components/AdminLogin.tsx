@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-export default function AdminLogin() {
+const AdminLogin = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
@@ -11,8 +11,8 @@ export default function AdminLogin() {
       const response = await axios.post("/api/login", { password });
       if (response.status === 200) {
         const { token } = response.data;
-        localStorage.setItem("token", token); // 토큰을 로컬 스토리지에 저장
-        window.location.href = "/admin"; // 예: 관리 페이지로 이동
+        localStorage.setItem("token", token);
+        window.location.href = "/admin";
       }
     } catch (err) {
       console.log(err);
@@ -32,4 +32,6 @@ export default function AdminLogin() {
       {error && <p>{error}</p>}
     </form>
   );
-}
+};
+
+export default AdminLogin;

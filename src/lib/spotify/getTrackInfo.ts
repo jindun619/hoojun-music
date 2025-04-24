@@ -1,6 +1,6 @@
 import { createSpotifySdk } from ".";
 
-export async function getTrackInfo(trackId: string) {
+export const getTrackInfo = async (trackId: string) => {
   try {
     const spotify = createSpotifySdk();
     const track = await spotify.tracks.get(trackId);
@@ -9,4 +9,4 @@ export async function getTrackInfo(trackId: string) {
     console.error(`Failed to fetch track ${trackId}:`, error);
     return null;
   }
-}
+};

@@ -4,20 +4,17 @@ interface TrackFormProps {
   trackId: string;
   scores: Scores;
   setTrackId: React.Dispatch<React.SetStateAction<string>>;
-  setScores: React.Dispatch<React.SetStateAction<Scores>>;
   handleAddTrack: () => void;
   handleScoreChange: (key: keyof Scores, value: number) => void;
 }
 
-const TrackForm: React.FC<TrackFormProps> = ({
+const TrackForm = ({
   trackId,
   scores,
   setTrackId,
-  setScores,
   handleAddTrack,
   handleScoreChange,
-}) => {
-  console.log(setScores);
+}: TrackFormProps) => {
   return (
     <div className="card bg-base-100 shadow-md">
       <div className="card-body space-y-4">

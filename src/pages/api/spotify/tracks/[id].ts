@@ -1,10 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { getTrackInfo } from "@/lib/spotify/getTrackInfo";
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   const {
     query: { id },
     method,
@@ -25,4 +22,6 @@ export default async function handler(
     console.error(err);
     return res.status(500).json({ error: "Failed to fetch track" });
   }
-}
+};
+
+export default handler;

@@ -8,9 +8,12 @@ interface RankListProps {
 const RankList = ({ data }: RankListProps) => {
   return (
     <div className="w-full max-w-2xl mx-auto mt-6">
-      <h2 className="text-2xl font-bold mb-4 text-center text-primary">
-        HOOJUN CHART
-      </h2>
+      {/* <h2 className="text-3xl font-extrabold text-center text-primary mb-2 tracking-tight">
+        🎶 Hoojun’s Music Chart
+      </h2> */}
+      {/* <p className="text-center text-sm text-base-content/70 mb-6">
+        기깔난 subtitle이 떠오르지 않네.. 일단 보류!
+      </p> */}
       <div className="space-y-2">
         {data.map((track) => (
           <RankItem

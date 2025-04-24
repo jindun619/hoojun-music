@@ -6,7 +6,7 @@ import { rankTracksByScore } from "./rankTracksByScore";
 let cachedTracks: Track[] | null = null;
 
 export async function getRankedTracks() {
-  if (cachedTracks) return cachedTracks; // ✅ 이미 계산된 값이 있다면 반환
+  if (cachedTracks) return cachedTracks;
 
   const rawTracks = await getTracks();
   const convertedTracks = await Promise.all(
@@ -17,6 +17,6 @@ export async function getRankedTracks() {
   );
   const ranked = rankTracksByScore(validTracks);
 
-  cachedTracks = ranked; // ✅ 메모리에 저장
+  cachedTracks = ranked; // 메모리에 저장
   return ranked;
 }

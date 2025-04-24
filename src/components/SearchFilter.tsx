@@ -3,10 +3,10 @@ interface SearchFilterProps {
   handleSearchChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const SearchFilter: React.FC<SearchFilterProps> = ({
+const SearchFilter = ({
   searchQuery,
   handleSearchChange,
-}) => {
+}: SearchFilterProps) => {
   return (
     <div className="card bg-base-100 shadow-md p-4">
       <div className="flex items-center space-x-2">

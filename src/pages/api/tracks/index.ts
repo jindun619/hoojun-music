@@ -6,10 +6,7 @@ import { RawTrack } from "@/types/RawTrack";
 const TRACKS_KEY = "tracks";
 const redis = Redis.fromEnv();
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === "GET") {
     const data = (await redis.json.get(TRACKS_KEY)) as Record<string, RawTrack>;
     const trackArray = Object.values(data);
@@ -49,4 +46,6 @@ export default async function handler(
   }
 
   return res.status(405).json({ error: "Method Not Allowed" });
-}
+};
+
+export default handler;

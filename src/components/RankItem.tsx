@@ -31,7 +31,7 @@ const RankItem = ({
       className="flex items-center gap-4 p-4 rounded-lg shadow-md bg-base-100 cursor-pointer hover:shadow-lg transition-all duration-200"
       onClick={handleClick}
     >
-      <div className="text-lg font-extrabold text-green-600 w-8 text-center">
+      <div className="text-lg font-extrabold text-primary w-8 text-center">
         {rank}
       </div>
 

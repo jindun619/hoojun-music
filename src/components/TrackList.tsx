@@ -6,7 +6,7 @@ interface TrackListProps {
   handleDelete: (id: string) => void;
 }
 
-const TrackList: React.FC<TrackListProps> = ({ tracks, handleDelete }) => {
+const TrackList = ({ tracks, handleDelete }: TrackListProps) => {
   return (
     <div className="space-y-6">
       {tracks.map((track) => (

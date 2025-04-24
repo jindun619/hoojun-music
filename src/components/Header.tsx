@@ -1,20 +1,20 @@
 import Link from "next/link";
 import { Home, Info, Music } from "lucide-react";
 
-const Header: React.FC = () => {
+const Header = () => {
   return (
-    <header className="bg-base-100 shadow-md">
-      <div className="navbar max-w-6xl mx-auto px-4 py-3">
+    <header className="bg-base-100 shadow-sm">
+      <div className="navbar max-w-6xl mx-auto px-4 py-4">
         {/* 왼쪽: 로고 & 타이틀 */}
         <div className="flex-1">
-          <Link href="/" className="flex items-center gap-2 text-primary">
+          <Link href="/" className="flex items-center gap-3 text-primary">
             <Music className="w-6 h-6" />
             <div className="flex flex-col leading-tight">
-              <span className="text-xl font-bold tracking-tight">
+              <span className="text-xl font-extrabold tracking-tight">
                 music.hoojun.kim
               </span>
-              <span className="text-sm text-base-content/60 -mt-1">
-                내가 좋아하는 노래들
+              <span className="text-xs text-base-content/50 tracking-wide">
+                Hoojun’s Music Chart
               </span>
             </div>
           </Link>
@@ -24,7 +24,7 @@ const Header: React.FC = () => {
         <div className="flex-none">
           {/* 모바일용 드롭다운 */}
           <div className="dropdown dropdown-end md:hidden">
-            <label tabIndex={0} className="btn btn-ghost btn-sm">
+            <label tabIndex={0} className="btn btn-ghost btn-circle">
               <svg
                 className="w-5 h-5"
                 fill="none"
@@ -37,7 +37,7 @@ const Header: React.FC = () => {
                   strokeLinejoin="round"
                   strokeWidth="2"
                   d="M4 6h16M4 12h16M4 18h16"
-                ></path>
+                />
               </svg>
             </label>
             <ul
@@ -47,7 +47,7 @@ const Header: React.FC = () => {
               <li>
                 <Link
                   href="/"
-                  className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-primary hover:text-primary-content transition-colors duration-200"
+                  className="flex items-center gap-2 px-3 py-2 hover:bg-primary hover:text-primary-content rounded-lg transition"
                 >
                   <Home className="w-4 h-4" />
                   Home
@@ -56,7 +56,7 @@ const Header: React.FC = () => {
               <li>
                 <Link
                   href="/about"
-                  className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-primary hover:text-primary-content transition-colors duration-200"
+                  className="flex items-center gap-2 px-3 py-2 hover:bg-primary hover:text-primary-content rounded-lg transition"
                 >
                   <Info className="w-4 h-4" />
                   About
@@ -67,10 +67,18 @@ const Header: React.FC = () => {
 
           {/* 데스크탑용 메뉴 */}
           <nav className="hidden md:flex gap-2">
-            <Link href="/" className="btn btn-ghost btn-sm text-base">
+            <Link
+              href="/"
+              className="btn btn-ghost btn-sm flex items-center gap-1"
+            >
+              <Home className="w-4 h-4" />
               Home
             </Link>
-            <Link href="/about" className="btn btn-ghost btn-sm text-base">
+            <Link
+              href="/about"
+              className="btn btn-ghost btn-sm flex items-center gap-1"
+            >
+              <Info className="w-4 h-4" />
               About
             </Link>
           </nav>

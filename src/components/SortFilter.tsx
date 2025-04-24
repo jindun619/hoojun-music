@@ -8,12 +8,12 @@ interface SortFilterProps {
   setSortOrder: React.Dispatch<React.SetStateAction<SortOrder>>;
 }
 
-const SortFilter: React.FC<SortFilterProps> = ({
+const SortFilter = ({
   sortOption,
   sortOrder,
   setSortOption,
   setSortOrder,
-}) => {
+}: SortFilterProps) => {
   return (
     <div className="card bg-base-100 shadow-md p-4">
       <div className="flex items-center space-x-4">

@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useRouter } from "next/router";
 
-export default function Login() {
+const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const router = useRouter();
@@ -13,8 +13,8 @@ export default function Login() {
       const response = await axios.post("/api/login", { password });
       if (response.status === 200) {
         const { token } = response.data;
-        localStorage.setItem("token", token); // 토큰을 로컬 스토리지에 저장
-        router.push("/admin"); // 관리자 페이지로 이동
+        localStorage.setItem("token", token);
+        router.push("/admin");
       }
     } catch (err) {
       console.log(err);
@@ -46,4 +46,6 @@ export default function Login() {
       </form>
     </div>
   );
-}
+};
+
+export default Login;

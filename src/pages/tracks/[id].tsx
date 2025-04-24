@@ -59,19 +59,15 @@ export const getStaticProps: GetStaticProps<TrackDetailPageProps> = async (
   };
 };
 
-const TrackDetailPage: React.FC<TrackDetailPageProps> = ({
-  track,
-  album,
-  artist,
-}) => {
+const TrackDetailPage = ({ track, album, artist }: TrackDetailPageProps) => {
   const scoreLabels: Record<string, string> = {
-    structure: "구조적 흐름",
-    lyrics: "가사",
-    production: "프로덕션",
-    performance: "퍼포먼스",
-    originality: "독창성",
-    melody_rhythm: "멜로디 & 리듬",
-    emotion: "감정 깊이",
+    structure: "구조적 흐름(structure)",
+    lyrics: "가사(lyrics)",
+    production: "프로덕션(production)",
+    performance: "퍼포먼스(performance)",
+    originality: "독창성(originality)",
+    melody_rhythm: "멜로디 & 리듬(melody & rhythm)",
+    emotion: "감정 깊이(emotion)",
   };
 
   return (
@@ -125,12 +121,12 @@ const TrackDetailPage: React.FC<TrackDetailPageProps> = ({
           {Object.entries(track.scores).map(([key, value]) => (
             <div
               key={key}
-              className="flex justify-between px-4 py-2 bg-neutral-100 rounded-md text-sm text-neutral-700"
+              className="px-4 py-3 bg-neutral-100 rounded-md text-sm text-neutral-700 flex flex-col items-start gap-1"
             >
-              <span className="font-medium">
+              <span className="font-medium break-keep leading-snug">
                 {scoreLabels[key as keyof typeof scoreLabels] ?? key}
               </span>
-              <span className="font-bold">{value}</span>
+              <span className="font-bold text-base">{value}</span>
             </div>
           ))}
         </div>

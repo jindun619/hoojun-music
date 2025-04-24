@@ -5,10 +5,7 @@ import { RawTrack } from "@/types/RawTrack";
 const TRACKS_KEY = "tracks";
 const redis = Redis.fromEnv();
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+const handler = async (req: NextApiRequest, res: NextApiResponse) => {
   try {
     const { id } = req.query;
 
@@ -18,7 +15,6 @@ export default async function handler(
         .json({ error: "Invalid or missing ID in request" });
     }
 
-    // 데이터 가져오기
     const data = (await redis.json.get(TRACKS_KEY)) as Record<string, RawTrack>;
 
     const key = Object.keys(data).find((k) => data[k].id === id);
@@ -73,4 +69,6 @@ export default async function handler(
     console.error("API Error:", error);
     return res.status(500).json({ error: "Internal Server Error" });
   }
-}
+};
+
+export default handler;
