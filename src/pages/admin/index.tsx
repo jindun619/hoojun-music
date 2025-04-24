@@ -128,10 +128,12 @@ const AdminPage = () => {
     const dto: TrackCreateDTO = {
       trackId: extractedTrackId,
       scores,
-      description: description || "", // 빈 값 처리
+      description: description || "",
     };
 
     try {
+      await axios.post("/api/tracks", dto);
+
       await fetchTracks();
 
       setTrackId("");
