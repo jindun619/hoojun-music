@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { createSpotifySdk } from "@/lib/spotify";
 import { getTrackInfo } from "@/lib/spotify/getTrackInfo";
 
 export default async function handler(
