@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { Redis } from "@upstash/redis";
 import { TrackCreateDTO } from "@/types/dto/TrackCreateDTO";
 import { RawTrack } from "@/types/RawTrack";
+import { clearTrackCache } from "@/utils/getRankedTracks";
 
 const TRACKS_KEY = "tracks";
 const redis = Redis.fromEnv();
@@ -35,6 +36,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       };
 
       await redis.json.set(TRACKS_KEY, "$", updatedData);
+
+      clearTrackCache();
 
       return res
         .status(201)

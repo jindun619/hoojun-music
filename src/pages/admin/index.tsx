@@ -135,8 +135,6 @@ const AdminPage = () => {
     try {
       await axios.post("/api/tracks", dto);
 
-      clearTrackCache();
-
       await fetchTracks();
 
       setTrackId("");
