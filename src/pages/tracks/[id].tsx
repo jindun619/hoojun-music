@@ -123,6 +123,7 @@ const TrackDetailPage = ({ track, album, artist }: TrackDetailPageProps) => {
             <div
               key={key}
               className="px-4 py-3 bg-neutral-100 rounded-md text-sm text-neutral-700 flex flex-col items-start gap-1"
+              style={{ wordWrap: "break-word" }} // 글자가 넘칠 경우 줄 바꿈
             >
               <span className="font-medium break-keep leading-snug">
                 {scoreLabels[key as keyof typeof scoreLabels] ?? key}
