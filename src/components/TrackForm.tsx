@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Scores } from "@/types/Scores";
 
 interface TrackFormProps {
@@ -6,7 +7,7 @@ interface TrackFormProps {
   scores: Scores;
   setTrackId: React.Dispatch<React.SetStateAction<string>>;
   setDescription: (desc: string) => void;
-  handleAddTrack: () => void;
+  handleAddTrack: () => Promise<void>;
   handleScoreChange: (key: keyof Scores, value: number) => void;
 }
 
@@ -19,6 +20,17 @@ const TrackForm = ({
   handleAddTrack,
   handleScoreChange,
 }: TrackFormProps) => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async () => {
+    setIsLoading(true);
+    try {
+      await handleAddTrack();
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <div className="card bg-base-100 shadow-md">
       <div className="card-body space-y-4">
@@ -64,8 +76,19 @@ const TrackForm = ({
           </div>
         ))}
 
-        <button className="btn btn-primary w-full" onClick={handleAddTrack}>
-          Add Track
+        <button
+          className={`btn w-full ${isLoading ? "btn-disabled" : "btn-primary"}`}
+          onClick={handleSubmit}
+          disabled={isLoading}
+        >
+          {isLoading ? (
+            <>
+              <span className="loading loading-spinner loading-sm mr-2" />
+              Loading...
+            </>
+          ) : (
+            "Add Track"
+          )}
         </button>
       </div>
     </div>
