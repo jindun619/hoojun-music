@@ -18,7 +18,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       rankedTracks,
     },
-    revalidate: 60,
+    revalidate: 3600,
   };
 };
 

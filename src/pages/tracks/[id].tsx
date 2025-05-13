@@ -56,7 +56,7 @@ export const getStaticProps: GetStaticProps<TrackDetailPageProps> = async (
         imageUrl: artistInfo.images[0]?.url ?? "",
       },
     },
-    revalidate: 60,
+    revalidate: 3600,
   };
 };
 
