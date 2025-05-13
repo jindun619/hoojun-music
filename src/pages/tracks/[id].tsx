@@ -1,4 +1,4 @@
-import { GetStaticPaths, GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import Image from "next/image";
 import { getRankedTracks } from "@/utils/getRankedTracks";
 import { getTrackInfo } from "@/lib/spotify/getTrackInfo";
@@ -19,17 +19,9 @@ interface TrackDetailPageProps {
   };
 }
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const rankedTracks = await getRankedTracks();
-  const paths = rankedTracks.map((track) => ({
-    params: { id: track.id },
-  }));
-  return { paths, fallback: "blocking" };
-};
-
-export const getStaticProps: GetStaticProps<TrackDetailPageProps> = async (
-  context
-) => {
+export const getServerSideProps: GetServerSideProps<
+  TrackDetailPageProps
+> = async (context) => {
   const { id } = context.params as { id: string };
   const rankedTracks = await getRankedTracks();
   const track = rankedTracks.find((t) => t.id === id)!;
@@ -56,7 +48,6 @@ export const getStaticProps: GetStaticProps<TrackDetailPageProps> = async (
         imageUrl: artistInfo.images[0]?.url ?? "",
       },
     },
-    revalidate: 3600,
   };
 };
 

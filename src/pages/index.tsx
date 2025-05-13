@@ -1,4 +1,4 @@
-import { GetStaticProps } from "next";
+import { GetServerSideProps } from "next";
 import RankList from "@/components/RankList";
 import { RankedTrack } from "@/types/RankedTrack";
 import { getRankedTracks } from "@/utils/getRankedTracks";
@@ -11,14 +11,13 @@ const Home = ({ rankedTracks }: Props) => {
   return <RankList data={rankedTracks} />;
 };
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getServerSideProps: GetServerSideProps = async () => {
   const rankedTracks = await getRankedTracks();
 
   return {
     props: {
       rankedTracks,
     },
-    revalidate: 3600,
   };
 };
 
