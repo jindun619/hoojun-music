@@ -1,0 +1,268 @@
+{
+  "0": {
+    "description": "",
+    "id": "0",
+    "scores": {
+      "emotion": 3,
+      "lyrics": 3,
+      "melody_rhythm": 3,
+      "originality": 5,
+      "performance": 4,
+      "production": 4,
+      "structure": 4
+    },
+    "trackId": "3z8h0TU7ReDPLIbEnYhWZb"
+  },
+  "1": {
+    "description": "",
+    "id": "1",
+    "scores": {
+      "emotion": 3,
+      "lyrics": 3,
+      "melody_rhythm": 4,
+      "originality": 3,
+      "performance": 4,
+      "production": 3,
+      "structure": 2
+    },
+    "trackId": "2kkvB3RNRzwjFdGhaUA0tz"
+  },
+  "2": {
+    "description": "",
+    "id": "2",
+    "scores": {
+      "emotion": 3,
+      "lyrics": 3,
+      "melody_rhythm": 4,
+      "originality": 2,
+      "performance": 3,
+      "production": 3,
+      "structure": 4
+    },
+    "trackId": "4NrGMEm5SvvpJ9Tk1Rq3cP"
+  },
+  "3": {
+    "description": "",
+    "id": "3",
+    "scores": {
+      "emotion": 4,
+      "lyrics": 5,
+      "melody_rhythm": 3,
+      "originality": 3,
+      "performance": 3,
+      "production": 4,
+      "structure": 4
+    },
+    "trackId": "2RChe0r2cMoyOvuKobZy44"
+  },
+  "4": {
+    "description": "",
+    "id": "4",
+    "scores": {
+      "emotion": 4,
+      "lyrics": 4,
+      "melody_rhythm": 4,
+      "originality": 3,
+      "performance": 3,
+      "production": 3,
+      "structure": 4
+    },
+    "trackId": "7iN1s7xHE4ifF5povM6A48"
+  },
+  "5": {
+    "description": "",
+    "id": "5",
+    "scores": {
+      "emotion": 4,
+      "lyrics": 3,
+      "melody_rhythm": 3,
+      "originality": 3,
+      "performance": 3,
+      "production": 3,
+      "structure": 4
+    },
+    "trackId": "0pNeVovbiZHkulpGeOx1Gj"
+  },
+  "6": {
+    "description": "",
+    "id": "6",
+    "scores": {
+      "emotion": 3,
+      "lyrics": 3,
+      "melody_rhythm": 3,
+      "originality": 3,
+      "performance": 4,
+      "production": 4,
+      "structure": 5
+    },
+    "trackId": "69kZsoRrSf7GBTSdJ4BjqA"
+  },
+  "7": {
+    "description": "",
+    "id": "7",
+    "scores": {
+      "emotion": 3,
+      "lyrics": 4,
+      "melody_rhythm": 2,
+      "originality": 4,
+      "performance": 5,
+      "production": 3,
+      "structure": 2
+    },
+    "trackId": "40riOy7x9W7GXjyGp4pjAv"
+  },
+  "8": {
+    "description": "",
+    "id": "8",
+    "scores": {
+      "emotion": 3,
+      "lyrics": 3,
+      "melody_rhythm": 5,
+      "originality": 3,
+      "performance": 5,
+      "production": 4,
+      "structure": 4
+    },
+    "trackId": "3DwQ7AH3xGD9h65ezslm6q"
+  },
+  "9": {
+    "description": "",
+    "id": "9",
+    "scores": {
+      "emotion": 3,
+      "lyrics": 3,
+      "melody_rhythm": 5,
+      "originality": 3,
+      "performance": 4,
+      "production": 4,
+      "structure": 3
+    },
+    "trackId": "08mG3Y1vljYA6bvDt4Wqkj"
+  },
+  "10": {
+    "description": "",
+    "id": "11",
+    "scores": {
+      "emotion": 4,
+      "lyrics": 4,
+      "melody_rhythm": 3,
+      "originality": 4,
+      "performance": 4,
+      "production": 8,
+      "structure": 5
+    },
+    "trackId": "5HNCy40Ni5BZJFw1TKzRsC"
+  },
+  "11": {
+    "description": "",
+    "id": "12",
+    "scores": {
+      "emotion": 3,
+      "lyrics": 3,
+      "melody_rhythm": 5,
+      "originality": 5,
+      "performance": 2,
+      "production": 3,
+      "structure": 3
+    },
+    "trackId": "4CeeEOM32jQcH3eN9Q2dGj"
+  },
+  "13": {
+    "description": "",
+    "id": "13",
+    "scores": {
+      "emotion": 4,
+      "lyrics": 4,
+      "melody_rhythm": 3,
+      "originality": 4,
+      "performance": 4,
+      "production": 3,
+      "structure": 3
+    },
+    "trackId": "70LcF31zb1H0PyJoS1Sx1r"
+  },
+  "14": {
+    "description": "",
+    "id": "14",
+    "scores": {
+      "emotion": 3,
+      "lyrics": 3,
+      "melody_rhythm": 4,
+      "originality": 3,
+      "performance": 4,
+      "production": 4,
+      "structure": 4
+    },
+    "trackId": "2MuWTIM3b0YEAskbeeFE1i"
+  },
+  "15": {
+    "description": "",
+    "id": "15",
+    "scores": {
+      "emotion": 3,
+      "lyrics": 3,
+      "melody_rhythm": 4,
+      "originality": 3,
+      "performance": 3,
+      "production": 3,
+      "structure": 3
+    },
+    "trackId": "2EqlS6tkEnglzr7tkKAAYD"
+  },
+  "16": {
+    "description": "",
+    "id": "16",
+    "scores": {
+      "emotion": 3,
+      "lyrics": 3,
+      "melody_rhythm": 5,
+      "originality": 3,
+      "performance": 3,
+      "production": 4,
+      "structure": 3
+    },
+    "trackId": "2zYzyRzz6pRmhPzyfMEC8s"
+  },
+  "17": {
+    "description": "",
+    "id": "17",
+    "scores": {
+      "emotion": 3,
+      "lyrics": 3,
+      "melody_rhythm": 4,
+      "originality": 3,
+      "performance": 4,
+      "production": 4,
+      "structure": 3
+    },
+    "trackId": "0bVtevEgtDIeRjCJbK3Lmv"
+  },
+  "18": {
+    "description": "",
+    "id": "18",
+    "scores": {
+      "emotion": 3,
+      "lyrics": 3,
+      "melody_rhythm": 4,
+      "originality": 3,
+      "performance": 3,
+      "production": 3,
+      "structure": 3
+    },
+    "trackId": "0EdMqiKs9LKXhspeQhl4RZ"
+  },
+  "19": {
+    "description": "",
+    "id": "19",
+    "scores": {
+      "emotion": 3,
+      "lyrics": 3,
+      "melody_rhythm": 4,
+      "originality": 3,
+      "performance": 5,
+      "production": 3,
+      "structure": 3
+    },
+    "trackId": "4GMQOjbWshf4Mzphkjg0DJ"
+  }
+}
