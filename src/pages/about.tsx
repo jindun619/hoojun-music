@@ -10,15 +10,15 @@ const AboutPage = () => {
         <p>
           사람들과 음악 이야기를 나누다 보면, 종종 “어떤 음악을 좋아해?”라는
           질문을 듣게 된다. 가장 좋아하는 뮤지션이나 가장 좋아하는 노래는 비교적
-          쉽게 대답할 수 있지만, ‘어떤 음악’이라는 질문은 생각보다 모호하게
-          느껴진다.
+          쉽게 대답할 수 있지만, &#39;어떤 음악&#39;이라는 질문은 생각보다
+          모호하게 느껴진다.
         </p>
         <p>
           장르를 얘기하면 되지 않느냐고 생각할 수 있지만, 그렇지도 않다. 예를
           들어 Nirvana와 Radiohead는 모두 얼터너티브 록으로 분류되지만 음악적
-          성향은 상당히 다르다. 반대로 누군가가 ‘얼터너티브 록’을 좋아한다고
-          했을 때, 그것이 Nirvana 스타일인지, Radiohead 스타일인지, 아니면 Muse
-          스타일인지는 쉽게 알 수 없다.
+          성향은 상당히 다르다. 반대로 누군가가 &#39;얼터너티브 록&#39;을
+          좋아한다고 했을 때, 그것이 Nirvana 스타일인지, Radiohead 스타일인지,
+          아니면 Muse 스타일인지는 쉽게 알 수 없다.
         </p>
         <p>
           사실 나 자신도 내가 정확히 어떤 음악을 좋아하는지 완전히 알고 있다고
@@ -54,7 +54,7 @@ const AboutPage = () => {
             <b>독창성</b> (originality): 참신하고 차별화된 요소
           </li>
           <li>
-            <b>멜로디 & 리듬</b> (melody & rhythm): 중독성 있는 흐름
+            <b>멜로디 &amp; 리듬</b> (melody &amp; rhythm): 중독성 있는 흐름
           </li>
           <li>
             <b>감정 깊이</b> (emotion): 감정의 전달력과 다양성
@@ -72,34 +72,35 @@ const AboutPage = () => {
           큰 영향을 미치도록 조정할 수 있다.
         </p>
         <p>
-          이 사이트는 결국, 내가 스스로에게 “나는 어떤 음악을 좋아하는
-          사람인가?”라는 질문에 조금 더 정직하게 답하기 위한 도구다.
+          이 사이트는 결국, 내가 스스로에게 &#34;나는 어떤 음악을 좋아하는
+          사람인가?&#34;라는 질문에 조금 더 정직하게 답하기 위한 도구다.
         </p>
 
         {/* Subtle English translation */}
         <div className="text-sm text-base-content/60 border-t pt-6 mt-6 space-y-4 italic">
           <p>
-            When talking with others about music, I’m often asked, “What kind of
-            music do you like?” While I can easily name my favorite artist or
-            song, answering what kind of music I like always feels surprisingly
-            vague.
+            When talking with others about music, I&#39;m often asked, &#34;What
+            kind of music do you like?&#34; While I can easily name my favorite
+            artist or song, answering what kind of music I like always feels
+            surprisingly vague.
           </p>
           <p>
-            You might think it's just a matter of naming a genre—but it’s not
-            that simple. For example, Nirvana and Radiohead are both categorized
-            as alternative rock, yet their musical styles are vastly different.
-            So when someone says they like “alternative rock,” it doesn’t tell
-            you whether they mean Nirvana, Radiohead, or even Muse.
+            You might think it&#39;s just a matter of naming a genre—but
+            it&#39;s not that simple. For example, Nirvana and Radiohead are
+            both categorized as alternative rock, yet their musical styles are
+            vastly different. So when someone says they like &#34;alternative
+            rock,&#34; it doesn&#39;t tell you whether they mean Nirvana,
+            Radiohead, or even Muse.
           </p>
           <p>
-            Honestly, I’m not sure I even fully understand my own taste in
+            Honestly, I&#39;m not sure I even fully understand my own taste in
             music. I probably have a set of subconscious criteria, but
             expressing those in words—or numbers—is no easy task.
           </p>
           <p>
             Still, I wanted to better understand my musical preferences and be
-            able to explain them clearly and logically to others. That’s why I
-            created this site.
+            able to explain them clearly and logically to others. That&#39;s why
+            I created this site.
           </p>
           <p>
             This site evaluates songs based on seven carefully chosen criteria,
@@ -124,7 +125,7 @@ const AboutPage = () => {
               <b>Originality</b>: Unique and fresh elements
             </li>
             <li>
-              <b>Melody & Rhythm</b>: Catchiness and rhythm
+              <b>Melody &amp; Rhythm</b>: Catchiness and rhythm
             </li>
             <li>
               <b>Emotion</b>: Intensity and variety of emotion conveyed
@@ -143,7 +144,7 @@ const AboutPage = () => {
           </p>
           <p>
             Ultimately, this site is a personal tool to answer the question:
-            “What kind of music do I truly love?”
+            &#34;What kind of music do I truly love?&#34;
           </p>
         </div>
       </article>
