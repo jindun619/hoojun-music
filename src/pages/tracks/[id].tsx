@@ -113,10 +113,9 @@ const TrackDetailPage = ({ track, album, artist }: TrackDetailPageProps) => {
           {Object.entries(track.scores).map(([key, value]) => (
             <div
               key={key}
-              className="px-4 py-3 bg-neutral-100 rounded-md text-sm text-neutral-700 flex flex-col items-start gap-1"
-              style={{ wordWrap: "break-word" }} // 글자가 넘칠 경우 줄 바꿈
+              className="px-4 py-3 bg-neutral-100 rounded-md text-sm text-neutral-700 flex flex-col items-start gap-1 max-w-full"
             >
-              <span className="font-medium break-keep leading-snug">
+              <span className="font-medium break-words leading-snug max-w-full">
                 {scoreLabels[key as keyof typeof scoreLabels] ?? key}
               </span>
               <span className="font-bold text-base">{value}</span>
