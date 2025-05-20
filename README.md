@@ -1,40 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# Hoojun Music
 
-## Getting Started
+Hoojun Music is a personal music review and ranking website built with **Next.js** and **TypeScript**. It serves as a platform for **Hoojun Kim** to share personal thoughts and ratings on music tracks. The website leverages **Spotify Web API** for track information and **Redis** for data storage, providing a seamless experience for music reviews and rankings.
 
-First, run the development server:
+## Live Demo
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Visit the live website here: [Hoojun Music](https://music.hoojun.kim)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 📚 Tech Stack
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+- **Next.js**: Modern React framework for optimal performance
+- **TypeScript**: For type safety and better development experience
+- **TailwindCSS & DaisyUI**: For modern and responsive design
+- **Spotify Web API**: For track information and metadata
+- **Upstash Redis**: For efficient data storage and caching
+- **JWT**: For secure admin authentication
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+## 💡 Features
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+- **Music Review Platform**: A personal space to share detailed reviews and ratings of music tracks
+- **Comprehensive Scoring System**: Detailed scoring across multiple categories (structure, lyrics, production, etc.)
+- **Spotify Integration**: Automatic track information fetching with album artwork and artist details
+- **Admin Dashboard**: Secure interface for managing tracks and reviews
+- **Responsive Design**: Optimized for both desktop and mobile devices
+- **Modern UI**: Clean and intuitive interface built with TailwindCSS and DaisyUI
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Key Learnings
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+- Built a full-stack music review platform with Next.js and TypeScript
+- Implemented secure authentication system using JWT
+- Integrated with Spotify Web API for real-time track data
+- Utilized Redis for efficient data management and caching
+- Created a responsive and user-friendly interface
+- Developed a comprehensive scoring and ranking system
